@@ -28,7 +28,7 @@ public class ProjectSecurityConfig {
                         .requestMatchers("/notices", "/contact", "/error", "/register").permitAll());
         http.formLogin(withDefaults());
         http.httpBasic(hbc -> hbc.authenticationEntryPoint(new CustomBasicAuthenticationEntryPoint()));
-        http.exceptionHandling(ehc -> ehc.accessDeniedHandler(new CustomAccessDeniedHandler()));
+        http.exceptionHandling(ehc -> ehc.accessDeniedHandler(new CustomAccessDeniedHandler()).accessDeniedPage("/denied"));
         return http.build();
 //      http.exceptionHandling(ehc ->ehc.authenticationEntryPoint(new CustomBasicAuthenticationEntryPoint()));
 //      http.exceptionHandling would be used to set the authenticationEntryPoint globally
